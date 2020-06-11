@@ -41,12 +41,10 @@ class Albuns extends Component {
     render () {
         if (this.props.albuns) {
             return (
-                <>
-                <div id="contentContainer" className="content-wrapper">
+                <main id="contentContainer" className="content-wrapper">
                     {this._populateAlbuns(this.props.albuns)}
-                </div>
-                <Slider />
-                </>
+                    <Slider />
+                </main>
             );
         } else {
             return <p>Loading....</p>

@@ -22,9 +22,8 @@ class App extends Component {
         this.setState({ isConnected: false });
         return;
       });
-      this.setState({
-        artist: artist
-      });
+
+      this.setState({ artist });
     }     
   }
 
@@ -35,9 +34,7 @@ class App extends Component {
           this.state.artist ?
           <>
           <Header artistName={this.state.artist.name} />
-          <main>
-            <Albuns albuns={this.state.artist.albuns} />
-          </main>
+          <Albuns albuns={this.state.artist.albuns} />
           </>
           :
           <Loading isConnected={this.state.isConnected}/>
