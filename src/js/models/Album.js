@@ -2,7 +2,7 @@ class Album {
     constructor(id, name, releaseDate, artwork) {
         this._id = id;
         this._name = name;
-        this._releaseDate = new Date(releaseDate);
+        this._releaseDate = new Date(releaseDate).getFullYear();
         this._artwork = artwork;
         this._tracks = null;
     }

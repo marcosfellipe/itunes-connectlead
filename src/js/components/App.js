@@ -3,21 +3,29 @@ import ApiController from '../controllers/ApiController';
 import '../../css/App.css';
 import Header from './Header';
 import Albuns from './Albuns';
+import Loading from './Loading';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.api = new ApiController();
+    this._api = new ApiController();
     this.state = {
-      artist: null
+      artist: null,
+      isConnected: true
     }
   }
 
   async componentDidMount() {
-    let artist = await this.api.getArtist('sia');
-    this.setState({
-      artist: artist
-    });   
+    if (this.state.isConnected) {
+      let artist = await this._api.getArtist('sia').catch(err => {
+        console.log(err);
+        this.setState({ isConnected: false });
+        return;
+      });
+      this.setState({
+        artist: artist
+      });
+    }     
   }
 
   render () {
@@ -27,10 +35,12 @@ class App extends Component {
           this.state.artist ?
           <>
           <Header artistName={this.state.artist.name} />
-          <main>{<Albuns albuns={this.state.artist.albuns} />}</main>
+          <main>
+            <Albuns albuns={this.state.artist.albuns} />
+          </main>
           </>
           :
-          <p>Loading...</p>
+          <Loading isConnected={this.state.isConnected}/>
         }
         
       </div>

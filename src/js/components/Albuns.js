@@ -1,31 +1,52 @@
 import React, { Component } from 'react';
+import '../../css/Albuns.css';
+import Slider from './Slider';
 
 class Albuns extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            albuns: null
-        };
+    _populateTracks(tracks) {
+        return tracks.map(track => {
+            return (
+                <li key={track.id} className="track">
+                    <div>{track.name}</div>
+                    <div className="track-duration">{track.duration}</div>
+                </li>
+                );
+            });
     }
 
-    async componentDidMount() {
-        let albuns = await this.props.albuns.then(albuns => {
-            return albuns.map(album => {
-                return <p>{album.name}</p>
-            });
-        });
-
-        this.setState({
-            albuns: albuns
+    _populateAlbuns(albuns) {
+        return albuns.map(album => {
+            return (
+                <div key={album.id} className="album-wrapper">
+                    <div className="artwork-container">
+                        <img src={album.artwork} alt={`${album.name} cover artwork`} className="album-artwork" loading="lazy" />
+                    </div>
+                    <div>
+                        <div className="vertical-line"></div>
+                    </div>
+                    <div className="tracks-container">
+                        <div className="album-title-wrapper">
+                            <p className="album-date">{album.releaseDate}</p>
+                            <p className="album-name">{album.name}</p>
+                        </div>
+                        <ol className="track-list">
+                            {this._populateTracks(album.tracks)}
+                        </ol>
+                    </div>
+                </div>
+            )
         });
     }
 
     render () {
-        if (this.state.albuns) {
+        if (this.props.albuns) {
             return (
-                <div>
-                    {this.state.albuns}
+                <>
+                <div id="contentContainer" className="content-wrapper">
+                    {this._populateAlbuns(this.props.albuns)}
                 </div>
+                <Slider />
+                </>
             );
         } else {
             return <p>Loading....</p>

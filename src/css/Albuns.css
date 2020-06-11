@@ -1,0 +1,145 @@
+.content-wrapper {
+    display: flex;
+    width: 100vw;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    flex: 1;
+}
+
+.album-wrapper {
+    flex-shrink: 0;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    flex-flow: column wrap;
+    margin: 1.5em 0;
+    padding: 1.8em 1.5em;
+    background-color: #ffffff;
+    border-radius: 1%;
+    box-shadow: 0px 1px 0.1em #dee1e2, 0px -1px 0.1em #dee1e2;
+}
+
+.album-artwork {
+    align-self: center;
+}
+
+.vertical-line {
+    display: none;
+}
+
+.album-title-wrapper {
+    width: 60%;
+    text-align: left;
+    margin-top: 1.5em;
+}
+
+.album-date {
+    margin: 0;
+    color: #b1b1b1;
+    padding: .1em 0;
+}
+
+.album-name {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 700;
+    color: #4a90e2;
+}
+
+.track-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.track {
+    padding: 1.2em 0;
+    border-bottom: 1px solid #dee1e2;
+}
+
+.track-duration {
+    display: none;
+}
+
+.slider-wrapper {
+    padding: 1em 0 5em;
+}
+
+.slider-button {
+    margin: 0 .5em;
+    padding: .5em 1em;
+    color: #979797;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+@media (min-width: 870px) {
+    .content-wrapper {
+        display: flex;
+        width: 80vw;
+        margin: 0 auto;
+        flex-flow: column nowrap;
+        overflow: visible;
+        flex: 1;
+    }
+    
+    .album-wrapper {
+        display: flex;
+        flex-shrink: 1;
+        flex-flow: row nowrap;
+        height: max-content;
+        width: 100%;
+        margin: 1.5em 0;
+        padding: 1.8em 1.5em;
+        font-family: 'Roboto', sans-serif;
+        background-color: #ffffff;
+        border-radius: 1%;
+        box-shadow: 0px 1px 0.1em #dee1e2, 0px -1px 0.1em #dee1e2;
+    }
+
+    .vertical-line {
+        display: inline-block;
+        width: 2px;
+        height: 50%;
+        margin: .8em 2.5em;
+        background-color: #dee1e2;
+    }
+
+    .album-title-wrapper {
+        width: 100%;
+        text-align: left;
+        margin-top: 0 auto;
+    }
+
+    .tracks-container {
+        width: 100%;
+    }
+
+    .album-name {
+        padding-bottom: 1em;
+        border-bottom: 1px solid #dee1e2;
+    }
+
+    .track {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .track-duration {
+        display: inline-block;
+        color: #dee1e2;
+    }
+
+    .track-list {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .slider-wrapper {
+        display: none;
+    }
+}
